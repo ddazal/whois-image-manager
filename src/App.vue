@@ -76,13 +76,13 @@ export default {
   },
   methods: {
     copyToClipboard () {
-      const input = document.createElement('input');
-      input.style = 'position: absolute; left: -1000px; top: -1000px';
-      input.value = this.url;
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand("copy");
-      document.body.removeChild(input);
+      const input = document.createElement('input')
+      input.style = 'position: absolute; left: -1000px; top: -1000px'
+      input.value = this.url
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand('copy')
+      document.body.removeChild(input)
       this.notification.show = false
     }
   }
