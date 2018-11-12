@@ -1,5 +1,7 @@
 # whois-image-manager
 
+Upload and transform Whois images to Cloudinary's Random Monkey account.
+
 ## Project setup
 ```
 yarn install
