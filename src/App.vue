@@ -3,7 +3,7 @@
     <v-toolbar>
       <v-toolbar-title>Whois Image Manager</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat>Cerrar sesión</v-btn>
+      <v-btn v-if="user" @click="signout" flat>Cerrar sesión</v-btn>
     </v-toolbar>
     <v-content>
       <router-view></router-view>
@@ -16,7 +16,26 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/auth'
+
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      user: undefined
+    }
+  },
+  mounted () {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.user = user
+    })
+  },
+  methods: {
+    async signout () {
+      await firebase.auth().signOut()
+      this.$router.replace('/')
+    }
+  }
 }
 </script>
